@@ -7,7 +7,8 @@ export const theme = extendTheme({
             200: '#DADADA',
             400: '#999999',
             600: '#47585B'            
-        }
+        }, 
+        highlight: '#FFBA08'
     },
     fonts: {
         heading: 'Poppins',

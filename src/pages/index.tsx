@@ -4,21 +4,32 @@ import { Header } from '../components/Header'
 import Image from 'next/image'
 //import { Image } from "@chakra-ui/react"
 
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+//import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
 import 'swiper/css';
+import "swiper/css/effect-fade"
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import styles from './home.module.scss';
+import { theme } from '../styles/theme';
+
+import SwiperCore, {
+  EffectFade, Navigation, Pagination
+} from 'swiper';
+
+// install Swiper modules
+SwiperCore.use([EffectFade, Navigation, Pagination]);
 
 export default function Home() {
   return (
     <Flex
-      w="100vw"
-      h="100vh"
+      w="100%"
+      h="100%"
       direction="column"
+      pb="10"
     >
       <Header />
 
@@ -118,34 +129,132 @@ export default function Home() {
       </Box>
 
 
-      <Divider width="90px" border="2px solid" margin="0 auto" borderColor="gray.600"/>
+      <Divider width="90px" border="2px solid" margin="0 auto" borderColor="gray.600" />
 
       <Heading as="h1" size="lg" color="gray.600" fontWeight="500" display="flex" flexDirection="column" textAlign="center" mt="52px" mb="52px">
         Vamos nessa? <Box as="span">Então escolha seu continente </Box>
       </Heading>
 
-      <Box w="100%" h="450">
-      <Swiper
-      // install Swiper modules
-      modules={[Navigation, Pagination]}
-      spaceBetween={2}
-      slidesPerView={1}
-      navigation={true}
-      pagination={{ clickable: true }}
-      //scrollbar={{ draggable: true }}
-      onSwiper={(swiper) => console.log(swiper)}
-      onSlideChange={() => console.log('slide change')}
-    >
-      <SwiperSlide>Slide 1</SwiperSlide>
-      <SwiperSlide>Slide 2</SwiperSlide>
-      <SwiperSlide>Slide 3</SwiperSlide>
-      <SwiperSlide>Slide 4</SwiperSlide>      
-    </Swiper>
+      <Box w="85vw" margin="0 auto">
+        <Swiper
+          effect={'fade'}
+          spaceBetween={0}
+          slidesPerView={1}
+          // navigation={{nextEl: 'swiper-button-next', prevEl: 'swiper-button-prev'}}
+          navigation={true}
+          pagination={{
+            clickable: true, renderBullet: function (index, className) {
+              return `<span class='swiper-pagination-bullet ${styles.dots} ${className}'></span>`
+            }
+          }}
+          scrollbar={{ draggable: true }}
+        >
+          {/* <Box className="swiper-button-next" color={theme.colors.highlight}></Box>
+      <Box className="swiper-button-prev" color={theme.colors.highlight}></Box> */}
+
+          <SwiperSlide>
+            <Flex
+              w="100%"
+              h="450px"
+              bg="url('/images/europe.jpg') no-repeat center center"
+              //bg="url('/images/europe.jpg')" 
+              backgroundSize="cover"
+              alignItems="center"
+              justifyContent="center"
+              direction="column"
+            >
+              {/* <Image
+                src="/images/europe.jpg"
+                alt="Europa"
+                layout="fill"
+                objectFit="cover"
+              /> */}
+              <Heading as="h1" color="white" fontWeight="700" fontSize="3xl">
+                Europa
+              </Heading>
+              <Text as="p" color="white" fontWeight="700" fontSize="md">
+                O continente mais antigo
+              </Text>
+
+
+            </Flex>
+          </SwiperSlide>
+          <SwiperSlide>
+            <Flex
+              w="100%"
+              h="450px"
+              bg="url('/images/asia.jpg') no-repeat center center"
+              //bg="url('/images/asia.jpg')" 
+              backgroundSize="cover"
+              alignItems="center"
+              justifyContent="center"
+              direction="column"
+            >
+              <Heading as="h1" color="white" fontWeight="700" fontSize="3xl">
+                Ásia
+              </Heading>
+              <Text as="p" color="white" fontWeight="700" fontSize="md">
+                O maior continente
+              </Text>
+            </Flex>
+          </SwiperSlide>
+          <SwiperSlide>
+            <Flex
+              w="100%"
+              h="450px"
+              bg="url('/images/america.jpg') no-repeat center center"
+              //bg="url('/images/asia.jpg')" 
+              backgroundSize="cover"
+              alignItems="center"
+              justifyContent="center"
+              direction="column">
+              <Heading as="h1" color="white" fontWeight="700" fontSize="3xl">
+                América
+              </Heading>
+              <Text as="p" color="white" fontWeight="700" fontSize="md">
+                O continente com a maior mata atlântica do mundo
+              </Text>
+            </Flex>
+          </SwiperSlide>
+          <SwiperSlide>
+            <Flex
+              w="100%"
+              h="450px"
+              bg="url('/images/africa.jpg') no-repeat center center"
+              //bg="url('/images/asia.jpg')" 
+              backgroundSize="cover"
+              alignItems="center"
+              justifyContent="center"
+              direction="column">
+              <Heading as="h1" color="white" fontWeight="700" fontSize="3xl">
+                África
+              </Heading>
+              <Text as="p" color="white" fontWeight="700" fontSize="md">
+                Venha explorar esse continente
+              </Text>
+            </Flex>
+          </SwiperSlide>
+          <SwiperSlide>
+            <Flex
+              w="100%"
+              h="450px"
+              bg="url('/images/oceania.jpg') no-repeat center center"
+              //bg="url('/images/asia.jpg')" 
+              backgroundSize="cover"
+              alignItems="center"
+              justifyContent="center"
+              direction="column">
+              <Heading as="h1" color="white" fontWeight="700" fontSize="3xl">
+                Oceania
+              </Heading>
+              <Text as="p" color="white" fontWeight="700" fontSize="md">
+                O continente de madagascar e modernidade
+              </Text>
+            </Flex>
+          </SwiperSlide>
+        </Swiper>
       </Box>
 
-    <h1>teste</h1>
-    <h1>teste</h1>
-    <h1>teste</h1>
     </Flex>
   )
 }
