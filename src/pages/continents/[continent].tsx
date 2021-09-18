@@ -17,11 +17,11 @@ export default function Continents() {
                 bg="url('/images/europe2.jpg') no-repeat center center"
                 backgroundSize="cover"
                 w="100%"
-                h="500"
-                alignItems="flex-end"
+                h={["150","150", "300", "500"]}
+                alignItems={["center", "center", "flex-end"]}
                 justifyContent="flex-start"
                 pl="140"
-                pb="20"
+                pb={["0", "0", "20"]}
                 mb="20"
             >
                 <Heading as="h1" color="white" fontWeight="600">
@@ -29,14 +29,14 @@ export default function Continents() {
                 </Heading>
             </Flex>
 
-            <Box as="main" pl="140" pr="140">
-                <Flex gridGap="70">
-                    <Text as="p" w="50%" fontSize="2xl" textAlign="justify">
+            <Box as="main" pl={["4", "4", "20", "140"]} pr={["4", "4", "20", "140"]}>
+                <Flex gridGap="70" flexDirection={["column", "column", "row"]}>
+                    <Text as="p" w={["100%", "100%", "50%"]} fontSize="2xl" textAlign="justify">
                         A Europa é, por convenção, um dos seis continentes do mundo. Compreendendo a península ocidental
                         da Eurásia, a Europa geralmente divide-se da Ásia a leste pela divisória de águas dos montes
                         Urais, o rio Ural, o mar Cáspio, o Cáucaso, e o mar Negro a sudeste
                     </Text>
-                    <Flex w="50%" justifyContent="space-around" alignItems="center">
+                    <Flex w={["100%", "100%", "50%"]} justifyContent="space-around" alignItems="center">
                         <Flex direction="column" alignItems="center" fontWeight="600">
                             <Box as="span" color={theme.colors.highlight} fontSize="5xl">
                                 50
@@ -65,7 +65,7 @@ export default function Continents() {
                         Cidades +100
                     </Heading>
 
-                    <Grid templateColumns="repeat(auto-fit, 256px)" gridGap="20">
+                    <Grid templateColumns="repeat(auto-fit, 256px)" gridGap="20" justifyContent={["center", "center", "normal"]}>
                         <CityCard />
                         <CityCard />
                         <CityCard />
