@@ -33,8 +33,8 @@ export default function Home() {
     >
       <Header />
 
-      <Flex bg="url('/images/home-banner.svg') no-repeat" w="100%" h="335" backgroundSize="cover" pl="140" pr="140">
-        <Flex w="50%" direction="column" gridGap="5" justifyContent="center">
+      <Flex bg="url('/images/home-banner.svg') no-repeat" w="100%" h={["163", "163", "335"]} backgroundSize="cover" pl={["4", "4", "140"]} pr={["4", "4", "140"]}>
+        <Flex w={["100%", "100%", "50%"]} direction="column" gridGap="5" justifyContent="center">
           <Heading as="h1" size="lg" color="gray.50" fontWeight="500" display="flex" flexDirection="column">
             5 Continentes, <Box as="span">infinitas possibilidades. </Box>
           </Heading>
@@ -44,7 +44,7 @@ export default function Home() {
           </Text>
 
         </Flex>
-        <Flex w="50%" alignItems="flex-end" justifyContent="flex-end" mb="-8">
+        <Flex w="50%" alignItems="flex-end" justifyContent="flex-end" mb="-8" display={["none", "none", "unset"]}>
           <Image
             src="/images/airplane.svg"
             alt="Imagem de um avião nas nuvens"
@@ -57,15 +57,23 @@ export default function Home() {
         {/* <Image src="/images/home-banner.svg" alt="Segun Adebayo" w="100%" /> */}
       </Flex>
 
-      <Box h="auto" w="100%" pl="140" pr="140" mt="20" mb="80px">
-        <Grid templateColumns="repeat(auto-fit, 158px)" justifyContent="space-around" gap="20" h="100%">
-          <Flex direction="column" justifyContent="space-between" alignItems="center" h="100%">
-            <Box w="auto">
+      <Box h="auto" w="100%" pl={["8", "8", "140"]} pr={["8", "8", "140"]} mt="20" mb="80px">
+        <Grid templateColumns={["repeat(auto-fit, 140px)", "repeat(auto-fit, 140px)", "repeat(auto-fit, 158px)"]} justifyContent={["flex-start", "flex-start", "space-around"]} gap="20" h="100%">
+          <Flex direction={["row", "row", "column"]} justifyContent={["inherit", "inherit", "space-between"]} alignItems="center" h="100%" gridGap={["20px", "20px", ""]}>
+            <Box w="auto" display={["none", "none", "unset"]}>
               <Image
                 src="/icons/cocktail.svg"
                 alt="Coquetel/Drink"
                 width={85}
-                height={85}
+                height={85}                
+              />
+            </Box>
+            <Box> 
+            <Image
+                src="/icons/dot.svg"
+                alt=""
+                width={8}
+                height={8}
               />
             </Box>
             <Text as="p" color="gray.600" size="md" fontWeight="600">
@@ -73,8 +81,8 @@ export default function Home() {
             </Text>
 
           </Flex>
-          <Flex direction="column" justifyContent="space-between" alignItems="center" h="100%">
-            <Box w="auto">
+          <Flex direction={["row", "row", "column"]} justifyContent={["inherit", "inherit", "space-between"]} alignItems="center" h="100%" gridGap={["20px", "20px", ""]}>
+            <Box w="auto" display={["none", "none", "unset"]}>
               <Image
                 src="/icons/surf.svg"
                 alt="Prancha de surf e sol"
@@ -82,12 +90,20 @@ export default function Home() {
                 height={85}
               />
             </Box>
+            <Box> 
+            <Image
+                src="/icons/dot.svg"
+                alt=""
+                width={8}
+                height={8}
+              />
+            </Box>
             <Text as="p" color="gray.600" size="md" fontWeight="600">
               praia
             </Text>
           </Flex>
-          <Flex direction="column" justifyContent="space-between" alignItems="center" h="100%">
-            <Box w="auto">
+          <Flex direction={["row", "row", "column"]} justifyContent={["inherit", "inherit", "space-between"]} alignItems="center" h="100%" gridGap={["20px", "20px", ""]}>
+            <Box w="auto" display={["none", "none", "unset"]}>
               <Image
                 src="/icons/building.svg"
                 alt="Edifício"
@@ -95,12 +111,20 @@ export default function Home() {
                 height={85}
               />
             </Box>
+            <Box> 
+            <Image
+                src="/icons/dot.svg"
+                alt=""
+                width={8}
+                height={8}
+              />
+            </Box>
             <Text as="p" color="gray.600" size="md" fontWeight="600">
               moderno
             </Text>
           </Flex>
-          <Flex direction="column" justifyContent="space-between" alignItems="center" h="100%">
-            <Box w="auto">
+          <Flex direction={["row", "row", "column"]} justifyContent={["inherit", "inherit", "space-between"]} alignItems="center" h="100%" gridGap={["20px", "20px", ""]}>
+            <Box w="auto" display={["none", "none", "unset"]}>
               <Image
                 src="/icons/museum.svg"
                 alt="Museu"
@@ -108,17 +132,33 @@ export default function Home() {
                 height={85}
               />
             </Box>
+            <Box> 
+            <Image
+                src="/icons/dot.svg"
+                alt=""
+                width={8}
+                height={8}
+              />
+            </Box>
             <Text as="p" color="gray.600" size="md" fontWeight="600">
               clássico
             </Text>
           </Flex>
-          <Flex direction="column" justifyContent="space-between" alignItems="center" h="100%">
-            <Box w="auto">
+          <Flex direction={["row", "row", "column"]} justifyContent={["inherit", "inherit", "space-between"]} alignItems="center" h="100%" gridGap={["20px", "20px", ""]}>
+            <Box w="auto" display={["none", "none", "unset"]}>
               <Image
                 src="/icons/earth.svg"
                 alt="Planeta terra"
                 width={85}
                 height={85}
+              />
+            </Box>
+            <Box> 
+            <Image
+                src="/icons/dot.svg"
+                alt=""
+                width={8}
+                height={8}
               />
             </Box>
             <Text as="p" color="gray.600" size="md" fontWeight="600">
@@ -135,7 +175,7 @@ export default function Home() {
         Vamos nessa? <Box as="span">Então escolha seu continente </Box>
       </Heading>
 
-      <Box w="85vw" margin="0 auto">
+      <Box w={["100vw", "100vw", "85vw"]} margin="0 auto">
         <Swiper
           effect={'fade'}
           spaceBetween={0}
@@ -155,7 +195,7 @@ export default function Home() {
           <SwiperSlide>
             <Flex
               w="100%"
-              h="450px"
+              h={["250px", "250px", "450px"]}
               bg="url('/images/europe.jpg') no-repeat center center"
               //bg="url('/images/europe.jpg')" 
               backgroundSize="cover"
@@ -182,7 +222,7 @@ export default function Home() {
           <SwiperSlide>
             <Flex
               w="100%"
-              h="450px"
+              h={["250px", "250px", "450px"]}
               bg="url('/images/asia.jpg') no-repeat center center"
               //bg="url('/images/asia.jpg')" 
               backgroundSize="cover"
@@ -201,7 +241,7 @@ export default function Home() {
           <SwiperSlide>
             <Flex
               w="100%"
-              h="450px"
+              h={["250px", "250px", "450px"]}
               bg="url('/images/america.jpg') no-repeat center center"
               //bg="url('/images/asia.jpg')" 
               backgroundSize="cover"
@@ -219,7 +259,7 @@ export default function Home() {
           <SwiperSlide>
             <Flex
               w="100%"
-              h="450px"
+              h={["250px", "250px", "450px"]}
               bg="url('/images/africa.jpg') no-repeat center center"
               //bg="url('/images/asia.jpg')" 
               backgroundSize="cover"
@@ -237,7 +277,7 @@ export default function Home() {
           <SwiperSlide>
             <Flex
               w="100%"
-              h="450px"
+              h={["250px", "250px", "450px"]}
               bg="url('/images/oceania.jpg') no-repeat center center"
               //bg="url('/images/asia.jpg')" 
               backgroundSize="cover"
