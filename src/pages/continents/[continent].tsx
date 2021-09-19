@@ -1,7 +1,9 @@
-import { Flex, Heading, Text, Box, Grid } from "@chakra-ui/react";
+import { Flex, Heading, Text, Box, Grid, Tooltip } from "@chakra-ui/react";
 import { CityCard } from "../../components/Citycard";
 import { Header } from "../../components/Header";
 import { theme } from '../../styles/theme';
+import { RiInformationLine } from 'react-icons/ri';
+import { Icon } from '../../components/Icon';
 
 
 export default function Continents() {
@@ -17,7 +19,7 @@ export default function Continents() {
                 bg="url('/images/europe2.jpg') no-repeat center center"
                 backgroundSize="cover"
                 w="100%"
-                h={["150","150", "300", "500"]}
+                h={["150", "150", "300", "500"]}
                 alignItems={["center", "center", "flex-end"]}
                 justifyContent="flex-start"
                 pl="140"
@@ -55,7 +57,16 @@ export default function Continents() {
                             <Box as="span" color={theme.colors.highlight} fontSize="5xl">
                                 27
                             </Box>
-                            <Text as="p">cidades +100</Text>
+                            <Flex alignItems="center" gridGap="1.5">
+                                <Text as="p">
+                                    cidades +100
+                                </Text>
+                                <Tooltip label="Você pode encontrar muito mais cidades também">
+                                    <Icon> 
+                                        <RiInformationLine size={16} color={theme.colors.gray200}/>
+                                    </Icon>                                    
+                                </Tooltip>                                
+                            </Flex>
                         </Flex>
                     </Flex>
                 </Flex>
