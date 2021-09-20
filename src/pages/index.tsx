@@ -1,3 +1,5 @@
+
+import { useState, useEffect } from "react"
 import { Flex, Box, Heading, Text, Grid, Divider } from '@chakra-ui/react'
 import Head from 'next/head'
 import { Header } from '../components/Header'
@@ -21,9 +23,20 @@ import SwiperCore, {
 } from 'swiper';
 
 // install Swiper modules
-SwiperCore.use([EffectFade, Navigation, Pagination]);
+SwiperCore.use([EffectFade, Navigation, Pagination]); 
 
 export default function Home() {
+  const [continents, setContinents] = useState();
+
+  useEffect(() => {
+    fetch("/api/continents")
+      .then((res) => res.json())
+      .then((json) => {
+        console.log(json)
+        setContinents(json.continents);
+      })
+  }, [])
+
   return (
     <Flex
       w="100%"
