@@ -4,9 +4,24 @@ import { Header } from "../../components/Header";
 import { theme } from '../../styles/theme';
 import { RiInformationLine } from 'react-icons/ri';
 import { Icon } from '../../components/Icon';
+import { useRouter } from "next/router";
+import { useEffect } from 'react';
 
 
 export default function Continents() {
+    const router = useRouter();
+    const { continent } = router.query;
+    console.log('cont', continent);
+
+
+    useEffect(() => {
+        fetch('/api/citys')
+        .then(res => res.json())
+        .then(json => {
+            console.log('cityssss', json.citys);
+        })
+    }, [])
+
     return (
         <Flex
             w="100%"
@@ -61,7 +76,7 @@ export default function Continents() {
                                 <Text as="p">
                                     cidades +100
                                 </Text>
-                                <Tooltip label="Você pode encontrar muito mais cidades também">
+                                <Tooltip label="Essas cidades estão entre as 100+ visitadas do mundo">
                                     <Icon> 
                                         <RiInformationLine size={16} color={theme.colors.gray200}/>
                                     </Icon>                                    

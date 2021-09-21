@@ -21,12 +21,21 @@ import { theme } from '../styles/theme';
 import SwiperCore, {
   EffectFade, Navigation, Pagination
 } from 'swiper';
+import { useRouter } from "next/router"
 
 // install Swiper modules
-SwiperCore.use([EffectFade, Navigation, Pagination]); 
+SwiperCore.use([EffectFade, Navigation, Pagination]);
+
+type Continent = {
+  id: number;
+  name: string;
+  description: string;
+  image: string;
+}
 
 export default function Home() {
-  const [continents, setContinents] = useState();
+  const [continents, setContinents] = useState<Continent[]>();
+  const router = useRouter();
 
   useEffect(() => {
     fetch("/api/continents")
@@ -36,6 +45,11 @@ export default function Home() {
         setContinents(json.continents);
       })
   }, [])
+
+  function handleRedirectToContinentPage(continentName: string) {
+    console.log('teste');
+    router.push(`/continents/${continentName.toLocaleLowerCase()}`);
+  }
 
   return (
     <Flex
@@ -78,11 +92,11 @@ export default function Home() {
                 src="/icons/cocktail.svg"
                 alt="Coquetel/Drink"
                 width={85}
-                height={85}                
+                height={85}
               />
             </Box>
-            <Box> 
-            <Image
+            <Box>
+              <Image
                 src="/icons/dot.svg"
                 alt=""
                 width={8}
@@ -103,8 +117,8 @@ export default function Home() {
                 height={85}
               />
             </Box>
-            <Box> 
-            <Image
+            <Box>
+              <Image
                 src="/icons/dot.svg"
                 alt=""
                 width={8}
@@ -124,8 +138,8 @@ export default function Home() {
                 height={85}
               />
             </Box>
-            <Box> 
-            <Image
+            <Box>
+              <Image
                 src="/icons/dot.svg"
                 alt=""
                 width={8}
@@ -145,8 +159,8 @@ export default function Home() {
                 height={85}
               />
             </Box>
-            <Box> 
-            <Image
+            <Box>
+              <Image
                 src="/icons/dot.svg"
                 alt=""
                 width={8}
@@ -166,8 +180,8 @@ export default function Home() {
                 height={85}
               />
             </Box>
-            <Box> 
-            <Image
+            <Box>
+              <Image
                 src="/icons/dot.svg"
                 alt=""
                 width={8}
@@ -205,106 +219,33 @@ export default function Home() {
           {/* <Box className="swiper-button-next" color={theme.colors.highlight}></Box>
       <Box className="swiper-button-prev" color={theme.colors.highlight}></Box> */}
 
-          <SwiperSlide>
-            <Flex
-              w="100%"
-              h={["250px", "250px", "450px"]}
-              bg="url('/images/europe.jpg') no-repeat center center"
-              //bg="url('/images/europe.jpg')" 
-              backgroundSize="cover"
-              alignItems="center"
-              justifyContent="center"
-              direction="column"
-            >
-              {/* <Image
-                src="/images/europe.jpg"
-                alt="Europa"
-                layout="fill"
-                objectFit="cover"
-              /> */}
-              <Heading as="h1" color="white" fontWeight="700" fontSize="3xl">
-                Europa
-              </Heading>
-              <Text as="p" color="white" fontWeight="700" fontSize="md">
-                O continente mais antigo
-              </Text>
+          {
+            continents?.map(continent => (
+              <SwiperSlide key={continent.id}>
+                <Flex
+                  w="100%"
+                  h={["250px", "250px", "450px"]}
+                  bg={`url('${continent.image}') no-repeat center center`}
+                  backgroundSize="cover"
+                  alignItems="center"
+                  justifyContent="center"
+                  direction="column"
+                  cursor="pointer"
+                  onClick={() => handleRedirectToContinentPage(continent.name)}
+                >
+                  <Heading as="h1" color="white" fontWeight="700" fontSize="3xl">
+                    {continent.name}
+                  </Heading>
+                  <Text as="p" color="white" fontWeight="700" fontSize="md">
+                    {continent.description}
+                  </Text>
 
 
-            </Flex>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Flex
-              w="100%"
-              h={["250px", "250px", "450px"]}
-              bg="url('/images/asia.jpg') no-repeat center center"
-              //bg="url('/images/asia.jpg')" 
-              backgroundSize="cover"
-              alignItems="center"
-              justifyContent="center"
-              direction="column"
-            >
-              <Heading as="h1" color="white" fontWeight="700" fontSize="3xl">
-                Ásia
-              </Heading>
-              <Text as="p" color="white" fontWeight="700" fontSize="md">
-                O maior continente
-              </Text>
-            </Flex>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Flex
-              w="100%"
-              h={["250px", "250px", "450px"]}
-              bg="url('/images/america.jpg') no-repeat center center"
-              //bg="url('/images/asia.jpg')" 
-              backgroundSize="cover"
-              alignItems="center"
-              justifyContent="center"
-              direction="column">
-              <Heading as="h1" color="white" fontWeight="700" fontSize="3xl">
-                América
-              </Heading>
-              <Text as="p" color="white" fontWeight="700" fontSize="md">
-                O continente com a maior mata atlântica do mundo
-              </Text>
-            </Flex>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Flex
-              w="100%"
-              h={["250px", "250px", "450px"]}
-              bg="url('/images/africa.jpg') no-repeat center center"
-              //bg="url('/images/asia.jpg')" 
-              backgroundSize="cover"
-              alignItems="center"
-              justifyContent="center"
-              direction="column">
-              <Heading as="h1" color="white" fontWeight="700" fontSize="3xl">
-                África
-              </Heading>
-              <Text as="p" color="white" fontWeight="700" fontSize="md">
-                Venha explorar esse continente
-              </Text>
-            </Flex>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Flex
-              w="100%"
-              h={["250px", "250px", "450px"]}
-              bg="url('/images/oceania.jpg') no-repeat center center"
-              //bg="url('/images/asia.jpg')" 
-              backgroundSize="cover"
-              alignItems="center"
-              justifyContent="center"
-              direction="column">
-              <Heading as="h1" color="white" fontWeight="700" fontSize="3xl">
-                Oceania
-              </Heading>
-              <Text as="p" color="white" fontWeight="700" fontSize="md">
-                O continente de madagascar e modernidade
-              </Text>
-            </Flex>
-          </SwiperSlide>
+                </Flex>
+              </SwiperSlide>
+            ))
+          }
+
         </Swiper>
       </Box>
 
