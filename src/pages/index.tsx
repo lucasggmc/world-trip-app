@@ -61,7 +61,7 @@ export default function Home() {
       <Header />
 
       <Flex bg="url('/images/home-banner.svg') no-repeat" w="100%" h={["163", "163", "335"]} backgroundSize="cover" pl={["4", "4", "140"]} pr={["4", "4", "140"]}>
-        <Flex w={["100%", "100%", "50%"]} direction="column" gridGap="5" justifyContent="center">
+        <Flex w={["100%", "100%", "100%", "50%"]} direction="column" gridGap="5" justifyContent="center">
           <Heading as="h1" size="lg" color="gray.50" fontWeight="500" display="flex" flexDirection="column">
             5 Continentes, <Box as="span">infinitas possibilidades. </Box>
           </Heading>
@@ -71,7 +71,7 @@ export default function Home() {
           </Text>
 
         </Flex>
-        <Flex w="50%" alignItems="flex-end" justifyContent="flex-end" mb="-8" display={["none", "none", "unset"]}>
+        <Flex w="50%" alignItems="flex-end" justifyContent="flex-end" mt="100px" display={["none", "none", "none", "unset"]}>
           <Image
             src="/images/airplane.svg"
             alt="Imagem de um avião nas nuvens"
@@ -95,7 +95,7 @@ export default function Home() {
                 height={85}
               />
             </Box>
-            <Box>
+            <Box display={["unset", "unset", "none"]}>
               <Image
                 src="/icons/dot.svg"
                 alt=""
@@ -117,7 +117,7 @@ export default function Home() {
                 height={85}
               />
             </Box>
-            <Box>
+            <Box display={["unset", "unset", "none"]}>
               <Image
                 src="/icons/dot.svg"
                 alt=""
@@ -138,7 +138,7 @@ export default function Home() {
                 height={85}
               />
             </Box>
-            <Box>
+            <Box display={["unset", "unset", "none"]}>
               <Image
                 src="/icons/dot.svg"
                 alt=""
@@ -159,7 +159,7 @@ export default function Home() {
                 height={85}
               />
             </Box>
-            <Box>
+            <Box display={["unset", "unset", "none"]}>
               <Image
                 src="/icons/dot.svg"
                 alt=""
@@ -180,7 +180,7 @@ export default function Home() {
                 height={85}
               />
             </Box>
-            <Box>
+            <Box display={["unset", "unset", "none"]}>
               <Image
                 src="/icons/dot.svg"
                 alt=""
