@@ -1,24 +1,33 @@
 import { Flex, Heading, Text, Box, Grid, Tooltip } from "@chakra-ui/react";
-import { CityCard } from "../../components/Citycard";
-import { Header } from "../../components/Header";
-import { theme } from '../../styles/theme';
+
+import { Header } from "../../../components/Header";
+import { theme } from '../../../styles/theme';
 import { RiInformationLine } from 'react-icons/ri';
-import { Icon } from '../../components/Icon';
+import { Icon } from '../../../components/Icon';
 import { useRouter } from "next/router";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { CityCard } from "../../../components/Citycard";
+import { ContinentImage } from "../../../components/ContinentImage";
+
+type City = {
+    id: number;
+    continentId: number;
+    name: string;
+    country: string;
+    image: string;
+}
 
 
 export default function Continents() {
     const router = useRouter();
-    const { continent } = router.query;
-    console.log('cont', continent);
-
+    const { continent, continentId } = router.query;    
+    const [citys, setCitys] = useState<City[]>();    
 
     useEffect(() => {
-        fetch('/api/citys')
+        fetch(`/api/citys/${continentId}`)
         .then(res => res.json())
-        .then(json => {
-            console.log('cityssss', json.citys);
+        .then(json => {            
+            setCitys(json.citys);
         })
     }, [])
 
@@ -30,21 +39,7 @@ export default function Continents() {
             pb="10"
         >
             <Header />
-            <Flex
-                bg="url('/images/europe2.jpg') no-repeat center center"
-                backgroundSize="cover"
-                w="100%"
-                h={["150", "150", "300", "500"]}
-                alignItems={["center", "center", "flex-end"]}
-                justifyContent="flex-start"
-                pl="140"
-                pb={["0", "0", "20"]}
-                mb="20"
-            >
-                <Heading as="h1" color="white" fontWeight="600">
-                    Europa
-                </Heading>
-            </Flex>
+            <ContinentImage continentId={Number(continentId)} continentName={continent?.toString()}/>            
 
             <Box as="main" pl={["4", "4", "20", "140"]} pr={["4", "4", "20", "140"]}>
                 <Flex gridGap="70" flexDirection={["column", "column", "row"]}>
@@ -92,11 +87,11 @@ export default function Continents() {
                     </Heading>
 
                     <Grid templateColumns="repeat(auto-fit, 256px)" gridGap="20" justifyContent={["center", "center", "normal"]}>
-                        <CityCard />
-                        <CityCard />
-                        <CityCard />
-                        <CityCard />
-                        <CityCard />
+                        {
+                            citys?.map(city => (
+                                <CityCard {...city} key={city.id}/>                                
+                            ))
+                        }                                                
                     </Grid>
 
                 </Flex>

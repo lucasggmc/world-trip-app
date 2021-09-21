@@ -40,15 +40,13 @@ export default function Home() {
   useEffect(() => {
     fetch("/api/continents")
       .then((res) => res.json())
-      .then((json) => {
-        console.log(json)
+      .then((json) => {        
         setContinents(json.continents);
       })
   }, [])
 
-  function handleRedirectToContinentPage(continentName: string) {
-    console.log('teste');
-    router.push(`/continents/${continentName.toLocaleLowerCase()}`);
+  function handleRedirectToContinentPage(continentName: string, continentId: number) {    
+    router.push(`/continents/${continentName.toLocaleLowerCase()}/${continentId}`);
   }
 
   return (
@@ -74,14 +72,12 @@ export default function Home() {
         <Flex w="50%" alignItems="flex-end" justifyContent="flex-end" mt="100px" display={["none", "none", "none", "unset"]}>
           <Image
             src="/images/airplane.svg"
-            alt="Imagem de um avião nas nuvens"
-            //layout="responsive"
+            alt="Imagem de um avião nas nuvens"            
             width={417}
             height={270}
           />
         </Flex>
-
-        {/* <Image src="/images/home-banner.svg" alt="Segun Adebayo" w="100%" /> */}
+        
       </Flex>
 
       <Box h="auto" w="100%" pl={["8", "8", "140"]} pr={["8", "8", "140"]} mt="20" mb="80px">
@@ -231,7 +227,7 @@ export default function Home() {
                   justifyContent="center"
                   direction="column"
                   cursor="pointer"
-                  onClick={() => handleRedirectToContinentPage(continent.name)}
+                  onClick={() => handleRedirectToContinentPage(continent.name, continent.id)}
                 >
                   <Heading as="h1" color="white" fontWeight="700" fontSize="3xl">
                     {continent.name}

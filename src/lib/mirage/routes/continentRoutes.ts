@@ -10,6 +10,10 @@ const continentRoutes = (server: Server) => {
           { id: 5, name: "Oceania", description: "O continente de madagascar e modernidade", image: "/images/oceania.jpg" },
         ],
       }))
+      
+      server.get('/continents/:continentId', (schema: any, request) => {                 
+        return schema.continents.findBy({ id: request.params.continentId });
+    })
 }
 
 export default continentRoutes
